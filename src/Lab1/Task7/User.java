@@ -4,9 +4,9 @@ import java.util.List;
 
 public class User {
     private final String name;
-    private final List<Account> accounts = new ArrayList<>();
+    private final List<BankAccount> accounts = new ArrayList<>();
 
-    public User(final String name) {
+    public User(String name) {
         this.name = name;
     }
 
@@ -14,13 +14,13 @@ public class User {
         return name;
     }
 
-    public List<Account> getAccounts() {
+    public List<BankAccount> getAccounts() {
         return accounts;
     }
 
-    public void addAccount(final Account account) {
-        for (Account a : accounts) {
-            if (a.getAccountNumber().equals(account.getAccountNumber())) {
+    public void addAccount(BankAccount account) {
+        for (BankAccount acc : accounts) {
+            if (acc.getAccountNumber().equals(account.getAccountNumber())) {
                 throw new IllegalArgumentException("Account number must be unique");
             }
         }

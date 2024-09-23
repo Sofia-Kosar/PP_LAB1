@@ -17,19 +17,19 @@ public class Convertor {
 
     public double convertCurrency(final String input) {
         if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("Введення не може бути порожнім");
+            throw new IllegalArgumentException("Введіть щось у форматі '100 UAH into USD'");
         }
 
         final String[] parts = input.split(" ");
-        if (parts.length != 4 || !parts[2].equalsIgnoreCase("into")) {
-            throw new IllegalArgumentException("Невірний формат. Використовуйте формат '100 UAH into USD'");
+        if (parts.length != 4 ) {
+            throw new IllegalArgumentException("Невірний формат. Потрібно '100 UAH into USD'");
         }
 
         final double amount;
         try {
             amount = Double.parseDouble(parts[0]);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Перша частина введення повинна бути числом");
+            throw new IllegalArgumentException("Перша частина має бути числом");
         }
 
         if (amount < 0) {
@@ -43,20 +43,36 @@ public class Convertor {
     }
 
     private double calculateConversion(final double amount, final String fromCurrency, final String toCurrency) {
-        return switch (fromCurrency + "to" + toCurrency) {
-            case "UAHtoUSD" -> amount * UAH_TO_USD;
-            case "USDtoUAH" -> amount * USD_TO_UAH;
-            case "UAHtoEUR" -> amount * UAH_TO_EUR;
-            case "EURtoUAH" -> amount * EUR_TO_UAH;
-            case "UAHtoCAD" -> amount * UAH_TO_CAD;
-            case "CADtoUAH" -> amount * CAD_TO_UAH;
-            case "USDtoEUR" -> amount * USD_TO_EUR;
-            case "EURtoUSD" -> amount * EUR_TO_USD;
-            case "USDtoCAD" -> amount * USD_TO_CAD;
-            case "CADtoUSD" -> amount * CAD_TO_USD;
-            case "EURtoCAD" -> amount * EUR_TO_CAD;
-            case "CADtoEUR" -> amount * CAD_TO_EUR;
-            default -> throw new IllegalArgumentException("Невідома конверсія валюти");
-        };
+        String conversionKey = fromCurrency + "to" + toCurrency;
+
+        switch (conversionKey) {
+            case "UAHtoUSD":
+                return amount * UAH_TO_USD;
+            case "USDtoUAH":
+                return amount * USD_TO_UAH;
+            case "UAHtoEUR":
+                return amount * UAH_TO_EUR;
+            case "EURtoUAH":
+                return amount * EUR_TO_UAH;
+            case "UAHtoCAD":
+                return amount * UAH_TO_CAD;
+            case "CADtoUAH":
+                return amount * CAD_TO_UAH;
+            case "USDtoEUR":
+                return amount * USD_TO_EUR;
+            case "EURtoUSD":
+                return amount * EUR_TO_USD;
+            case "USDtoCAD":
+                return amount * USD_TO_CAD;
+            case "CADtoUSD":
+                return amount * CAD_TO_USD;
+            case "EURtoCAD":
+                return amount * EUR_TO_CAD;
+            case "CADtoEUR":
+                return amount * CAD_TO_EUR;
+            default:
+                throw new IllegalArgumentException("Невідома конверсія валюти");
+        }
     }
+
 }

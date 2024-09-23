@@ -1,5 +1,4 @@
 package Lab1.Task7;
-
 public class Bank {
     private final String name;
 
@@ -11,4 +10,3 @@ public class Bank {
         return name;
     }
 }
-

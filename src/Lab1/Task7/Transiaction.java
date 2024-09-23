@@ -3,37 +3,22 @@ import Lab1.Task6.Convertor;
 
 
 public class Transiaction {
-    private static final double INTERNAL_TRANSFER_SAME_USER = 0.0;
-    private static final double INTERBANK_TRANSFER_SAME_USER = 0.02;
-    private static final double INTERNAL_TRANSFER_DIFF_USER = 0.03;
-    private static final double INTERBANK_TRANSFER_DIFF_USER = 0.06;
+    private static final double SA_BANK_INT = 0.0;
+    private static final double DIF_BANK_INT = 0.02;
+    private static final double SA_BANK_EXT = 0.03;
+    private static final double DIF_BANK_EXT = 0.06;
 
+    private final Convertor converter = new Convertor();
 
-    private final Convertor convertor = new Convertor();
-
-    private double determineTransferFee(final Account fromAccount, final Account toAccount, final double amount) {
-        boolean sameBank = fromAccount.getBank().equals(toAccount.getBank());
-        boolean sameUser = fromAccount.getAccountNumber().equals(toAccount.getAccountNumber());
-
-        if (sameBank && sameUser) {
-            return INTERNAL_TRANSFER_SAME_USER * amount;
-        } else if (sameBank) {
-            return INTERNAL_TRANSFER_DIFF_USER * amount;
-        } else if (sameUser) {
-            return INTERBANK_TRANSFER_SAME_USER * amount;
-        } else {
-            return INTERBANK_TRANSFER_DIFF_USER * amount;
-        }
-    }
-    public boolean transfer(final Account fromAccount, final Account toAccount, final double amount) {
+    public boolean transfer(final BankAccount fromAccount, final BankAccount toAccount, final double amount) {
         if (fromAccount == null || toAccount == null) {
-            throw new IllegalArgumentException("There must be both acc");
+            throw new IllegalArgumentException("Потрібно 2 акаунти");
         }
 
-        final double convertedAmount = convertAmount(amount, fromAccount.getCurrency(), toAccount.getCurrency());
-        final double fee = determineTransferFee(fromAccount, toAccount, amount);
+        double fee = calculateFee(fromAccount, toAccount, amount);
 
-        if (fromAccount.thesame(amount + fee)) {
+        if (fromAccount.withdraw(amount + fee)) {
+            double convertedAmount = convertAmount(amount, fromAccount.getCurrency(), toAccount.getCurrency());
             toAccount.deposit(convertedAmount);
             return true;
         } else {
@@ -45,9 +30,23 @@ public class Transiaction {
         if (fromCurrency.equals(toCurrency)) {
             return amount;
         }
-        final String input = amount + " " + fromCurrency + " into " + toCurrency;
-        return convertor.convertCurrency(input);
+        String input = amount + " " + fromCurrency + " into " + toCurrency;
+        return converter.convertCurrency(input);
     }
 
-
+    private double calculateFee(final BankAccount fromAccount, final BankAccount toAccount, final double amount) {
+        if (fromAccount.getBank().equals(toAccount.getBank())) {
+            if (fromAccount.getAccountNumber().equals(toAccount.getAccountNumber())) {
+                return SA_BANK_INT * amount;
+            } else {
+                return SA_BANK_EXT * amount;
+            }
+        } else {
+            if (fromAccount.getAccountNumber().equals(toAccount.getAccountNumber())) {
+                return DIF_BANK_INT * amount;
+            } else {
+                return DIF_BANK_EXT * amount;
+            }
+        }
+    }
 }

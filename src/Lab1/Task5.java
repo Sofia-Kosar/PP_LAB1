@@ -9,7 +9,7 @@ public class Task5 {
             final int rows = scanner.nextInt();
             System.out.println("Введіть кількість стовпців: ");
             final int cols = scanner.nextInt();
-            scanner.nextLine(); // Очищення буфера
+            scanner.nextLine();
 
             final String[][] matrix = new String[rows][cols];
 
