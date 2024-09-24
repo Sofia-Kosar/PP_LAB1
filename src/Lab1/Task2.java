@@ -15,7 +15,7 @@ public class Task2 {
             System.out.println("Результат: " + result);
         }
 
-        private static String cexp(final String expr) {
+        private static String cexp(final String expr) { //clean the expresion
             String tempExpr = expr.replace("=", "");
             tempExpr = tempExpr.replace("?", "");
             return tempExpr.trim();
@@ -27,7 +27,7 @@ public class Task2 {
                 System.out.println("Помилка: Невірний формат виразу.");
                 return Double.NaN;
             }
-
+// переведення
             final double n1 = parseNumber(parts[0]);
             final double n2 = parseNumber(parts[2]);
             final char oper = parts[1].charAt(0);
