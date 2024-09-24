@@ -19,7 +19,8 @@ public class User {
     }
 
     public void addAccount(BankAccount account) {
-        for (BankAccount acc : accounts) {
+        for (int i = 0; i < accounts.size(); i++) {
+            BankAccount acc = accounts.get(i);
             if (acc.getAccountNumber().equals(account.getAccountNumber())) {
                 throw new IllegalArgumentException("Account number must be unique");
             }

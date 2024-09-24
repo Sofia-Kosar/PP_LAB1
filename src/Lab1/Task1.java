@@ -9,11 +9,13 @@ public class Task1 {
         final int num = scanner.nextInt();
 
         final String result = toBin(num);
+        //final String result2 = toBin2(num);
         System.out.println("Двійковий вигляд числа: " + result);
+        //System.out.println("Двійковий вигляд числа: " + result2);
     }
 
     public static String toBin(int num) {
-         String a = "";
+        String a = "";
 
         if (num == 0) {
             return "0";
@@ -28,6 +30,11 @@ public class Task1 {
         return a;
     }
 }
+    /*public static String toBin2(int num) {
+        // Using Integer.toString() to convert to binary
+        return Integer.toBinaryString(num);
+    }*/
+
 
     /*public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
