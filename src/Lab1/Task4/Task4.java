@@ -1,8 +1,5 @@
 package Lab1.Task4;
-import java.util.Scanner;
 public class Task4 {
-
-
         final char symbol;
         int count;
 

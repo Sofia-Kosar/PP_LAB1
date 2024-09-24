@@ -10,12 +10,12 @@ public class Counter {
         scanner.close();
 
         if (input.isEmpty()) {
-            System.out.println("Введено пустий рядок.");
+            System.out.println("Ви ввели пустий рядок");
             return;
         }
 
         final Task4[] counts = new Task4[input.length()];
-        int usc = 0;
+        int usc = 0; //uniqe symbol count
 
 
         for (int i = 0; i < input.length(); i++) {
@@ -33,7 +33,7 @@ public class Counter {
 
 
             if (!found) {
-                counts[usc] = new Task4(currentChar, 1);
+                counts[usc] = new Task4(currentChar, 1);// constructor
                 usc++;
             }
         }

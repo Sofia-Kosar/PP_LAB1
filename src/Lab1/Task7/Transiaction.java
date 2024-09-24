@@ -10,19 +10,19 @@ public class Transiaction {
 
     public boolean transfer(final BankAccount fromAccount, final BankAccount toAccount, final double amount) {
         if (fromAccount == null) {
-            throw new IllegalArgumentException("Потрібно 2 акаунти");
+            throw new IllegalArgumentException("We need 2 accounts");
         }
         if (toAccount == null) {
-            throw new IllegalArgumentException("E");
+            throw new IllegalArgumentException("We need 2 accounts");
         }
 
-        double fee = calculateFee(fromAccount, toAccount, amount);
+        double fee = calculateFee(fromAccount, toAccount, amount); // для обчислення комісії
 
-        if (fromAccount.withdraw(amount + fee)) {
-            double convertedAmount = convertAmount(amount, fromAccount.getCurrency(), toAccount.getCurrency());
-            return toAccount.deposit(convertedAmount);
+        if (fromAccount.minusMoney(amount + fee)) {
+            double convertedAmount = convertAmount(amount, fromAccount.getCurrency(), toAccount.getCurrency());// якщо треба конвертувати
+            return toAccount.addMoney(convertedAmount);
         } else {
-            return false;
+            return false;//якщо знаття не вдалось
         }
 
     }
@@ -37,8 +37,8 @@ public class Transiaction {
     }
 
     private double calculateFee(final BankAccount fromAccount, final BankAccount toAccount, final double amount) {
-        if (fromAccount.getBank().equals(toAccount.getBank())) {
-            if (fromAccount.getAccountNumber().equals(toAccount.getAccountNumber())) {
+        if (fromAccount.getBank().equals(toAccount.getBank())) { //if the same bank
+            if (fromAccount.getAccountNumber().equals(toAccount.getAccountNumber())) { //whether the same owner
                 return SA_BANK_INT * amount;
             } else {
                 return SA_BANK_EXT * amount;

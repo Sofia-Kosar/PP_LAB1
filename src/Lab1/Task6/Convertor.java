@@ -3,16 +3,19 @@ import java.util.Scanner;
 
 public class Convertor {
     private static final double UAH_TO_USD = 0.02418;
-    private static final double USD_TO_UAH = 41.34;
     private static final double UAH_TO_EUR = 0.02185;
-    private static final double USD_TO_EUR = 0.903;
-    private static final double EUR_TO_USD = 1.107;
-    private static final double USD_TO_CAD = 1.367;
-    private static final double CAD_TO_USD = 0.731;
-    private static final double EUR_TO_CAD = 1.513;
-    private static final double CAD_TO_EUR = 0.661;
-    private static final double EUR_TO_UAH = 45.77;
     private static final double UAH_TO_CAD = 0.03306;
+
+    private static final double USD_TO_UAH = 41.34;
+    private static final double USD_TO_CAD = 1.367;
+    private static final double USD_TO_EUR = 0.903;
+
+    private static final double EUR_TO_USD = 1.107;
+    private static final double EUR_TO_CAD = 1.513;
+    private static final double EUR_TO_UAH = 45.77;
+
+    private static final double CAD_TO_USD = 0.731;
+    private static final double CAD_TO_EUR = 0.661;
     private static final double CAD_TO_UAH = 30.24;
 
     public double convertCurrency(final String input) {
@@ -26,6 +29,7 @@ public class Convertor {
         }
 
         final double amount;
+
         try {
             amount = Double.parseDouble(parts[0]);
         } catch (NumberFormatException e) {
@@ -71,7 +75,7 @@ public class Convertor {
             case "CADtoEUR":
                 return amount * CAD_TO_EUR;
             default:
-                throw new IllegalArgumentException("Невідома конверсія валюти");
+                throw new IllegalArgumentException("Невідома  валюта");
         }
     }
 
