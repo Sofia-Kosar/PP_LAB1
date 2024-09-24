@@ -40,10 +40,12 @@ public class BankAccount {
         return balance;
     }
 
-    public void deposit(double amount) {
+    public boolean deposit(double amount) {
         if (amount > 0) {
             balance += amount;
+            return true;
         }
+        return false;
     }
 
     public boolean withdraw(double amount) {

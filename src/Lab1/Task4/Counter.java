@@ -9,6 +9,11 @@ public class Counter {
         final String input = scanner.nextLine();
         scanner.close();
 
+        if (input.isEmpty()) {
+            System.out.println("Введено пустий рядок.");
+            return;
+        }
+
         final Task4[] counts = new Task4[input.length()];
         int usc = 0;
 
