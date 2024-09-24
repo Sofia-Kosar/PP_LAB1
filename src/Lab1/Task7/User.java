@@ -18,7 +18,7 @@ public class User {
         return accounts;
     }
 
-    public void addAccount(BankAccount account) {
+    public void addAccount(BankAccount account) { //перевірка на унік акаунт
         for (int i = 0; i < accounts.size(); i++) {
             BankAccount acc = accounts.get(i);
             if (acc.getAccountNumber().equals(account.getAccountNumber())) {
@@ -26,5 +26,11 @@ public class User {
             }
         }
         accounts.add(account);
+    }
+    public void printBalances() {
+        System.out.println("User: " + name);
+        for (BankAccount acc : accounts) {
+            System.out.println("Account " + acc.getAccountNumber() + ": " + acc.getBalance() + " " + acc.getCurrency());
+        }
     }
 }

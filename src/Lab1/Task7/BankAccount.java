@@ -1,5 +1,4 @@
 package Lab1.Task7;
-import Lab1.Task7.Bank;
 
 
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class BankAccount {
         return balance;
     }
 
-    public boolean deposit(double amount) {
+    public boolean addMoney(double amount) {
         if (amount > 0) {
             balance += amount;
             return true;
@@ -48,7 +47,7 @@ public class BankAccount {
         return false;
     }
 
-    public boolean withdraw(double amount) {
+    public boolean minusMoney(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
             return true;
