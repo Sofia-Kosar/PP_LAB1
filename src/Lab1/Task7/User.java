@@ -29,8 +29,10 @@ public class User {
     }
     public void printBalances() {
         System.out.println("User: " + name);
-        for (BankAccount acc : accounts) {
+        for (int i = 0; i < accounts.size(); i++) {
+            BankAccount acc = accounts.get(i);
             System.out.println("Account " + acc.getAccountNumber() + ": " + acc.getBalance() + " " + acc.getCurrency());
         }
     }
+
 }
