@@ -1,4 +1,4 @@
-package Lab2.Task3;
+package Lab2.task3;
 public class Good {
     private final double length;
     private final double width;

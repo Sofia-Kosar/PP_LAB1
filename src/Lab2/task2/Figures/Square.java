@@ -1,6 +1,6 @@
-package Lab2.Task2.Figures;
+package Lab2.task2.Figures;
 
-import Lab2.Task2.AreaCalculable;
+import Lab2.task2.AreaCalculable;
 
 public class Square implements AreaCalculable {
     private final double side;
