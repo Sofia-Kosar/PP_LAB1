@@ -49,34 +49,21 @@ public class Convertor {
     private double calculateConversion(final double amount, final String fromCurrency, final String toCurrency) {
         String conversionKey = fromCurrency + "to" + toCurrency;
 
-        switch (conversionKey) {
-            case "UAHtoUSD":
-                return amount * UAH_TO_USD;
-            case "USDtoUAH":
-                return amount * USD_TO_UAH;
-            case "UAHtoEUR":
-                return amount * UAH_TO_EUR;
-            case "EURtoUAH":
-                return amount * EUR_TO_UAH;
-            case "UAHtoCAD":
-                return amount * UAH_TO_CAD;
-            case "CADtoUAH":
-                return amount * CAD_TO_UAH;
-            case "USDtoEUR":
-                return amount * USD_TO_EUR;
-            case "EURtoUSD":
-                return amount * EUR_TO_USD;
-            case "USDtoCAD":
-                return amount * USD_TO_CAD;
-            case "CADtoUSD":
-                return amount * CAD_TO_USD;
-            case "EURtoCAD":
-                return amount * EUR_TO_CAD;
-            case "CADtoEUR":
-                return amount * CAD_TO_EUR;
-            default:
-                throw new IllegalArgumentException("Невідома  валюта");
-        }
+        return switch (conversionKey) {
+            case "UAHtoUSD" -> amount * UAH_TO_USD;
+            case "USDtoUAH" -> amount * USD_TO_UAH;
+            case "UAHtoEUR" -> amount * UAH_TO_EUR;
+            case "EURtoUAH" -> amount * EUR_TO_UAH;
+            case "UAHtoCAD" -> amount * UAH_TO_CAD;
+            case "CADtoUAH" -> amount * CAD_TO_UAH;
+            case "USDtoEUR" -> amount * USD_TO_EUR;
+            case "EURtoUSD" -> amount * EUR_TO_USD;
+            case "USDtoCAD" -> amount * USD_TO_CAD;
+            case "CADtoUSD" -> amount * CAD_TO_USD;
+            case "EURtoCAD" -> amount * EUR_TO_CAD;
+            case "CADtoEUR" -> amount * CAD_TO_EUR;
+            default -> throw new IllegalArgumentException("Невідома  валюта");
+        };
     }
 
 }
