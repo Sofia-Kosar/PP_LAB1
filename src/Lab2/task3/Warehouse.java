@@ -1,7 +1,6 @@
-package Lab2.Task3;
+package Lab2.task3;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Warehouse {

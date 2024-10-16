@@ -1,6 +1,6 @@
-package Lab2.Task2.Figures;
-import Lab2.Task2.AreaCalculable;
-import Lab2.Task2.CapacityCalculable;
+package Lab2.task2.Figures;
+import Lab2.task2.AreaCalculable;
+import Lab2.task2.CapacityCalculable;
 
 public class Sphere implements AreaCalculable, CapacityCalculable {
     private final double radius;
