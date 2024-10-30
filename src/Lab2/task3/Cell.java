@@ -30,9 +30,6 @@ public class Cell {
         if (goods.size() >= 5) {
             throw new IllegalArgumentException("The cell has reached the item limit.");
         }
-        if (good.getLength() > this.length || good.getWidth() > this.width || good.getHeight() > this.height) {
-            throw new IllegalArgumentException("The good is too large to fit in the cell.");
-        }
         if (getCurrentGoodsVolume() + good.getVolume() > this.getVolume()) {
             throw new IllegalArgumentException("The cell doesn't have enough capacity for this good.");
         }

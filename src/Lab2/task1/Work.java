@@ -16,18 +16,26 @@ public class Work {
                 choice = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println("Invalid input! Please enter a number.");
-                scanner.next(); // Очистка некоректного вводу
+                scanner.next();
             }
 
             if (choice == 1) {
                 graph.addTop("A", 1);
                 graph.addTop("B", 2);
                 graph.addTop("C", 3);
+                graph.addTop("D", 4);
+                graph.addTop("E", 5);
 
-                graph.addEdge("A", "B", true);
-                graph.addEdge("B", "C", false);
+                graph.addNode("A", "B", true);
+                graph.addNode("B", "C", true);
+                graph.addNode("C", "D", true);
+                graph.addNode("D", "E", true);
 
+                // Виведення графу
                 graph.displayGraph();
+
+                // Перевірка найкоротшого шляху між вершинами
+
             } else if (choice == 2) {
                 // Введення користувача
                 graph.displayGraphFromUserInput();
@@ -40,4 +48,5 @@ public class Work {
             scanner.close(); // Закриття сканера
         }
     }
+
 }
