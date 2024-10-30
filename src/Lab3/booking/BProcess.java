@@ -50,7 +50,18 @@ public class BProcess {
     public List<Booking> getBookingHistory() {
         return bookingHistory;
     }
-
+    public void printBookings() {
+        System.out.println("Bookings:");
+        bookings.forEach((client, accommodationBookings) ->
+                accommodationBookings.forEach((accommodation, dates) ->
+                        System.out.println(client.firstName() + " " +
+                                client.lastName() + " booked " +
+                                accommodation.getName() + " from " +
+                                dates[0] + " to " +
+                                dates[1])
+                )
+        );
+    }
     public Booking getBookingHistoryForAccommodation(Accommodation accommodation) {
         return bookingHistory.stream()
                 .filter(booking -> booking.getAccommodation().equals(accommodation))

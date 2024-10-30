@@ -66,7 +66,7 @@ public class AccProcess {
 
         double totalTaxCost = bookings.stream()
                 .filter(booking -> booking.getAccommodation().equals(accommodation))
-                .mapToDouble(booking -> booking.getDays() * accommodation.getPrice() * 0.30)
+                .mapToDouble(booking -> booking.getDays() * accommodation.getPrice() * 0.25)
                 .sum();
 
         return totalTaxCost + totalAmenitiesCost;
