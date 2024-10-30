@@ -1,5 +1,6 @@
 package Lab3.apartment;
 import Lab3.amenity.Amenity;
+import Lab3.amenity.Category;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public abstract class Capacity extends Accommodation {
                 switch (amenity.getCategory()) {
                     case ADULT -> this.maxSpace += amenity.getAdditionalSpace();
                     case KID -> this.childrenMaxSpace += amenity.getAdditionalSpace();
-                    case PET -> this.animalMaxSpace += amenity.getAdditionalSpace();
+                    case PET -> this.animalMaxSpace += amenity.getAdditionalSpace(); //зручності можуть збільшувати простір для певної категорії
                 }
             }
         }
