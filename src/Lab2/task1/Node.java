@@ -1,11 +1,11 @@
 package Lab2.task1;
 
-public class Edge {
+public class Node {
     private final Top from;
     private final Top to;
     private final boolean isDirected;
 
-    public Edge(Top from, Top to, boolean isDirected) {
+    public Node(Top from, Top to, boolean isDirected) {
         this.from = from;
         this.to = to;
         this.isDirected = isDirected;

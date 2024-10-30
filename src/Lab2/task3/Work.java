@@ -6,7 +6,10 @@ public class Work {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            System.out.println("Choose an action: 1 - Load test data, 2 - Enter your own data");
+            System.out.println("Choose input method:");
+            System.out.println("1. Predefined values");
+            System.out.println("2. User input");
+
             int choice = scanner.nextInt();
 
             if (choice == 1) {

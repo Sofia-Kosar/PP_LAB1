@@ -14,6 +14,7 @@ public class Warehouse {
         if (good.getLength() > cell.getLength() || good.getWidth() > cell.getWidth() || good.getHeight() > cell.getHeight()) {
             throw new IllegalArgumentException("This good exceeds the cell's dimensions.");
         }
+
         cell.addGood(good);
     }
 

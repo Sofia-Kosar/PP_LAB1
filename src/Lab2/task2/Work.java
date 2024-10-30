@@ -84,11 +84,13 @@ public class Work {
                     break;
 
                 case 6: // Pyramid
-                    System.out.print("Enter base area of the pyramid: ");
+                    System.out.print("Enter base of the pyramid (triangle base): ");
                     double basePyramid = scanner.nextDouble();
-                    System.out.print("Enter height of the pyramid: ");
+                    System.out.print("Enter height of the triangle base: ");
                     double heightPyramid = scanner.nextDouble();
-                    Pyramid pyramid = new Pyramid(basePyramid, heightPyramid);
+                    System.out.print("Enter pyramid height: ");
+                    double pyramidHeight = scanner.nextDouble();
+                    Pyramid pyramid = new Pyramid(basePyramid, heightPyramid, pyramidHeight);
                     System.out.println("Pyramid area: " + pyramid.calculateArea());
                     System.out.println("Pyramid capacity: " + pyramid.calculateCapacity());
                     break;
